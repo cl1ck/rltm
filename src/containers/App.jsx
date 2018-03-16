@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import { APP_TITLE } from 'config';
+import { selectLocale } from 'ducks/language';
+import { createSelector } from 'reselect';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const StyledContainer = styled.div`
   margin: 0 auto;
@@ -13,15 +17,25 @@ const StyledContainer = styled.div`
   flex-direction: column;
 `;
 
-const App = () => (
+export const App = ({ locale }) => (
   <StyledContainer>
     <Helmet>
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <title>{APP_TITLE}</title>
-      <html lang="en" />
+      <html lang={locale} />
     </Helmet>
     <h1><FormattedMessage id="containers.App.hello" /></h1>
   </StyledContainer>
 );
 
-export default hot(module)(App);
+App.propTypes = {
+  locale: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = createSelector(
+  selectLocale,
+  locale => ({ locale }),
+);
+
+const connectedApp = connect(mapStateToProps)(App);
+export default hot(module)(connectedApp);

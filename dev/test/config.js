@@ -1,0 +1,34 @@
+module.exports = {
+  setupFiles: [
+    '<rootDir>/dev/test/setup.js',
+  ],
+  snapshotSerializers: [
+    '<rootDir>/node_modules/enzyme-to-json/serializer',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleNameMapper: {
+    '^.+\\.scss$': 'identity-obj-proxy',
+    '\\.css$': '<rootDir>/src/test/mocks/styleMock.js',
+  },
+  transform: {
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/dev/test/transformer/fileTransformer.js',
+    '\\.jsx?$': '<rootDir>/node_modules/babel-jest',
+  },
+  transformIgnorePatterns: [
+    '/node_modules/',
+  ],
+  rootDir: '../../',
+  roots: [
+    '<rootDir>/src',
+  ],
+  unmockedModulePathPatterns: [
+    '<rootDir>/node_modules/react',
+    '<rootDir>/node_modules/react-dom',
+    '<rootDir>/node_modules/fbjs',
+  ],
+  globals: {
+    __DEV__: true,
+  },
+};

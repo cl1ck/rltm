@@ -1,23 +1,38 @@
-const path = require('path');
-
 module.exports = {
-  'root': true,
-  'extends': [
+  root: true,
+  extends: [
   	'airbnb',
   ],
-  'parser': 'babel-eslint',
-	'env': {
-      'browser': true,
-		  'commonjs': true,
-		  'es6': true,
+  plugins: [
+    'jest',
+  ],
+  parser: 'babel-eslint',
+	env: {
+      browser: true,
+		  commonjs: true,
+		  es6: true,
+		  'jest/globals': true,
 	},
-	'parserOptions': {
-		'ecmaVersion': 8,
+	parserOptions: {
+		ecmaVersion: 8,
 	},
-	'settings': {
+  rules: {
+    'no-param-reassign': ['error', {
+	    props: true,
+	    ignorePropertyModificationsFor: [
+	      'draft',
+	     ],
+    }],
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
+	},
+	settings: {
 	  'import/resolver': {
-      'node': {
-        'moduleDirectory': [
+      node: {
+        moduleDirectory: [
           'node_modules',
           'src',
         ],

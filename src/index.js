@@ -7,18 +7,18 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'normalize.css';
 
-import translations from 'translations';
+import messages from 'i18n';
 import configureStore from 'configureStore';
 import { ROOT_NODE } from 'config';
 import ConnectedLanguageProvider from 'containers/LanguageProvider';
 
-import App from 'containers/App';
+import AppContainer from 'containers/App';
 
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 
-const render = async (messages) => {
+const render = async (msg) => {
   if (!window.Intl) {
     await import('intl');
     await Promise.all([
@@ -30,9 +30,9 @@ const render = async (messages) => {
   ReactDOM.render(
     (
       <Provider store={store}>
-        <ConnectedLanguageProvider messages={messages}>
+        <ConnectedLanguageProvider messages={msg}>
           <ConnectedRouter history={history}>
-            <App />
+            <AppContainer />
           </ConnectedRouter>
         </ConnectedLanguageProvider>
       </Provider>
@@ -40,13 +40,13 @@ const render = async (messages) => {
     document.getElementById(ROOT_NODE),
   );
 };
-render(translations);
+render(messages);
 
 if (module.hot) {
-  module.hot.accept(['./translations', './containers/App'], () => {
+  module.hot.accept(['./i18n', './containers/App'], () => {
     ReactDOM.unmountComponentAtNode(document.getElementById(ROOT_NODE));
     // eslint-disable-next-line global-require
-    render(require('./translations').default);
+    render(require('./i18n').default);
   });
 }
 

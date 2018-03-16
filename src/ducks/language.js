@@ -1,31 +1,31 @@
+import produce from 'immer';
 import { createSelector } from 'reselect';
-import { fromJS } from 'immutable';
 import { DEFAULT_LOCALE } from 'config';
 
 // actions
 export const CHANGE_LOCALE = 'i18n/CHANGE_LOCALE';
 
 // selectors
-export const selectLanguage = state => state.get('language');
+export const selectLanguage = state => state.language;
 export const selectLocale = createSelector(
   selectLanguage,
-  languageState => languageState.get('locale'),
+  languageState => languageState.locale,
 );
 
 // reducers
-const initialState = fromJS({
+const initialState = {
   locale: DEFAULT_LOCALE,
-});
+};
 
-export default (state = initialState, action) => {
+export default (state = initialState, action) => produce(state, (draft) => {
   switch (action.type) {
     case CHANGE_LOCALE:
-      return state
-        .set('locale', action.locale);
+      draft.locale = action.locale;
+      break;
     default:
-      return state;
+      break;
   }
-};
+});
 
 // action creators
 export const changeLocale = languageLocale => ({
