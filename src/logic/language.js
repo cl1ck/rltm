@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { fromJS } from 'immutable';
-import { DEFAULT_LOCALE } from '../config';
+import { DEFAULT_LOCALE } from 'config';
 
 // actions
 export const CHANGE_LOCALE = 'i18n/CHANGE_LOCALE';
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 // action creators
 export const changeLocale = languageLocale => ({

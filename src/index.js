@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -6,12 +7,12 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'normalize.css';
 
-import translations from './translations';
-import configureStore from './configureStore';
-import { ROOT_NODE } from './config';
-import ConnectedLanguageProvider from './containers/LanguageProvider';
+import translations from 'translations';
+import configureStore from 'configureStore';
+import { ROOT_NODE } from 'config';
+import ConnectedLanguageProvider from 'containers/LanguageProvider';
 
-import App from './containers/App';
+import App from 'containers/App';
 
 const initialState = {};
 const history = createHistory();
@@ -44,6 +45,7 @@ render(translations);
 if (module.hot) {
   module.hot.accept(['./translations', './containers/App'], () => {
     ReactDOM.unmountComponentAtNode(document.getElementById(ROOT_NODE));
+    // eslint-disable-next-line global-require
     render(require('./translations').default);
   });
 }

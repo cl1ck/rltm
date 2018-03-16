@@ -2,16 +2,15 @@ import { createStore, applyMiddleware } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './redux';
+import rootReducer from 'logic';
 
 export default function configureStore(initialState = {}, history) {
-  const composeEnhancers = composeWithDevTools();
   const middlewares = [
     routerMiddleware(history),
   ];
 
   const enhancers = [
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middlewares),
   ];
 
   const store = createStore(
@@ -21,7 +20,7 @@ export default function configureStore(initialState = {}, history) {
   );
 
   if (module.hot) {
-    module.hot.accept('./redux', () => {
+    module.hot.accept('./logic', () => {
       store.replaceReducer(rootReducer);
     });
   }
