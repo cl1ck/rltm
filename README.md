@@ -2,6 +2,25 @@
 
 Realtime reactive framework.
 
+# Usage
+
+## setup
+
+Make sure [yarn](https://yarnpkg.com) and [nvm](https://github.com/creationix/nvm) are installed.
+Run `yarn install` for initial setup.
+
+## Development
+
+The following commands are available for development:
+
+`yarn start` to run the webpack dev server.
+`yarn run test` to run tests.
+`yarn run test:watch` to watch for tests.
+
+## Deployment
+
+`yarn run build` to build your application.
+
 # Libraries and tools
 
 ## Development

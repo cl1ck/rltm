@@ -62,7 +62,7 @@ export default {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: ['src', 'node_modules'],
+    modules: ['src', 'dev', 'node_modules'],
   },
   target: 'web',
 };

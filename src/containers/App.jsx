@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
 import { APP_TITLE } from 'config';
-import { selectLocale } from 'ducks/language';
+import { selectLocale } from 'modules/language';
 import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
-import { selectLocale } from 'ducks/language';
+import { selectLocale } from 'modules/language';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from 'config';
 
 export class LanguageProvider extends React.PureComponent {

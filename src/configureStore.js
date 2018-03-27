@@ -15,7 +15,9 @@ export default function configureStore(initialState = {}, history) {
   const store = createStore(
     reducer,
     initialState,
-    composeWithDevTools(...enhancers),
+    composeWithDevTools([
+      ...enhancers
+    ]),
   );
 
   if (module.hot) {

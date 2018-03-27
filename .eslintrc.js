@@ -39,4 +39,9 @@ module.exports = {
       },
 	  },
 	},
+	globals: {
+	  'createMockStore': true,
+	  'shallowWithStore': true,
+	  'mountWithStore': true,
+	}
 };

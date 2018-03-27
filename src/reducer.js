@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import language from 'ducks/language';
-import route from 'ducks/route';
+import language from 'blox/language';
+import route from 'blox/route';
 
 export default combineReducers({
   language,
