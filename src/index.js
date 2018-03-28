@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'normalize.css';
-
-import messages from 'i18n';
+import i18nMessages from 'i18n';
 import configureStore from 'configureStore';
 import { ROOT_NODE } from 'config';
-import ConnectedLanguageProvider from 'containers/LanguageProvider';
+import LanguageProvider from 'blocks/language';
+import { IntlProvider } from 'react-intl';
 
 import AppContainer from 'containers/App';
 
@@ -18,7 +18,7 @@ const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 
-const render = async (msg) => {
+const render = async (messages) => {
   if (!window.Intl) {
     await import('intl');
     await Promise.all([
@@ -30,17 +30,25 @@ const render = async (msg) => {
   ReactDOM.render(
     (
       <Provider store={store}>
-        <ConnectedLanguageProvider messages={msg}>
-          <ConnectedRouter history={history}>
-            <AppContainer />
-          </ConnectedRouter>
-        </ConnectedLanguageProvider>
+        <LanguageProvider>
+          {({ locale }) => (
+            <IntlProvider
+              locale={locale}
+              key={locale}
+              messages={messages[locale]}
+            >
+              <ConnectedRouter history={history}>
+                <AppContainer />
+              </ConnectedRouter>
+            </IntlProvider>
+          )}
+        </LanguageProvider>
       </Provider>
     ),
     document.getElementById(ROOT_NODE),
   );
 };
-render(messages);
+render(i18nMessages);
 
 if (module.hot) {
   module.hot.accept(['./i18n', './containers/App'], () => {

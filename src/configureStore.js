@@ -1,28 +1,19 @@
-import { createStore, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import reducer from 'reducer';
+import { createStore } from 'redux-blocks';
+import reducers from 'reducers';
+import blocks from 'blocks';
 
 export default function configureStore(initialState = {}, history) {
   const middlewares = [
     routerMiddleware(history),
   ];
+  const enhancers = [];
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-  ];
-
-  const store = createStore(
-    reducer,
-    initialState,
-    composeWithDevTools([
-      ...enhancers,
-    ]),
-  );
+  const store = createStore({ blocks, reducers, middlewares, enhancers, initialState });
 
   if (module.hot) {
-    module.hot.accept('./reducer', () => {
-      store.replaceReducer(reducer);
+    module.hot.accept(['./reducers/index', './blocks/index'], () => {
+      store.replaceReducer(blocks, reducers);
     });
   }
 
