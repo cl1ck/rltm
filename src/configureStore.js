@@ -16,7 +16,7 @@ export default function configureStore(initialState = {}, history) {
     reducer,
     initialState,
     composeWithDevTools([
-      ...enhancers
+      ...enhancers,
     ]),
   );
 
