@@ -1,20 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
 import { hot } from 'react-hot-loader';
-
-const StyledContainer = styled.div`
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-  padding: 0;
-  flex-direction: column;
-`;
+import { Switch, Route } from 'react-router-dom';
+import Home from 'components/Home';
 
 export const App = () => (
-  <StyledContainer>
-    <h1><FormattedMessage id="containers.App.hello" /></h1>
-  </StyledContainer>
+  <Switch>
+    <Route exact path="/" component={Home} />
+  </Switch>
 );
 
 export default hot(module)(App);

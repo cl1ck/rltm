@@ -1,3 +1,4 @@
 {
-  "containers.App.hello": "Hello world"
+  "containers.App.login": "Login",
+  "containers.App.helloWorld": "Hello World"
 }

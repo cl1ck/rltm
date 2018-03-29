@@ -24,6 +24,7 @@ const render = async (messages) => {
     await import('intl');
     await Promise.all([
       // add required languages here
+      // todo: externalize the import logic so index.js must not be changed
       import('intl/locale-data/jsonp/en.js'),
       import('intl/locale-data/jsonp/de.js'),
     ]);
