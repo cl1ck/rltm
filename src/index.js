@@ -8,9 +8,10 @@ import createHistory from 'history/createBrowserHistory';
 import 'normalize.css';
 import i18nMessages from 'i18n';
 import configureStore from 'configureStore';
-import { ROOT_NODE } from 'config';
-import LanguageProvider from 'blocks/language';
+import { ROOT_NODE, APP_TITLE } from 'config';
+import LocaleProvider from 'bits/locale';
 import { IntlProvider } from 'react-intl';
+import { Helmet } from 'react-helmet';
 
 import AppContainer from 'containers/App';
 
@@ -30,19 +31,26 @@ const render = async (messages) => {
   ReactDOM.render(
     (
       <Provider store={store}>
-        <LanguageProvider>
+        <LocaleProvider>
           {({ locale }) => (
-            <IntlProvider
-              locale={locale}
-              key={locale}
-              messages={messages[locale]}
-            >
-              <ConnectedRouter history={history}>
-                <AppContainer />
-              </ConnectedRouter>
-            </IntlProvider>
+            <React.Fragment>
+              <Helmet>
+                <meta charSet="utf-8" />
+                <title>{APP_TITLE}</title>
+                <html lang={locale} />
+              </Helmet>
+              <IntlProvider
+                locale={locale}
+                key={locale}
+                messages={messages[locale]}
+              >
+                <ConnectedRouter history={history}>
+                  <AppContainer />
+                </ConnectedRouter>
+              </IntlProvider>
+            </React.Fragment>
           )}
-        </LanguageProvider>
+        </LocaleProvider>
       </Provider>
     ),
     document.getElementById(ROOT_NODE),

@@ -1,7 +1,7 @@
 import { routerMiddleware } from 'react-router-redux';
-import { createStore } from 'redux-blocks';
+import { createStore } from 'redux-bits';
 import reducers from 'reducers';
-import blocks from 'blocks';
+import bits from 'bits';
 
 export default function configureStore(initialState = {}, history) {
   const middlewares = [
@@ -9,11 +9,17 @@ export default function configureStore(initialState = {}, history) {
   ];
   const enhancers = [];
 
-  const store = createStore({ blocks, reducers, middlewares, enhancers, initialState });
+  const store = createStore({
+    bits,
+    reducers,
+    middlewares,
+    enhancers,
+    initialState,
+  });
 
   if (module.hot) {
-    module.hot.accept(['./reducers/index', './blocks/index'], () => {
-      store.replaceReducer(blocks, reducers);
+    module.hot.accept(['./reducers/index', './bits/index'], () => {
+      store.replaceReducer(bits, reducers);
     });
   }
 

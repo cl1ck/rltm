@@ -7923,12 +7923,12 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-"redux-blocks@https://github.com/cl1ck/redux-blocks.git":
-  version "0.0.4"
-  resolved "https://github.com/cl1ck/redux-blocks.git#5797452a587966a9f954835185f0ab148baee065"
+redux-bits@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/redux-bits/-/redux-bits-0.0.6.tgz#bfbf47048e1100f1d2ccbf02e932ce2b9f33da73"
   dependencies:
-    eslint-config-airbnb "^16.1.0"
     immer "^1.2.1"
+    prop-types "^15.6.1"
     react "^16.2.0"
     react-redux "^5.0.7"
     redux "^3.7.2"
