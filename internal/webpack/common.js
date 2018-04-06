@@ -1,8 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpack from 'webpack';
+import path from 'path';
 
 export default {
+  entry: path.resolve(__dirname, '../runtime/index.js'),
   module: {
     rules: [
       {
@@ -57,7 +58,7 @@ export default {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: ['src', 'dev', 'node_modules'],
+    modules: ['src', 'internal', 'node_modules'],
   },
   target: 'web',
 };

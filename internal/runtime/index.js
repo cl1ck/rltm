@@ -6,14 +6,14 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'normalize.css';
-import i18nMessages from 'i18n';
-import configureStore from 'configureStore';
+import { loadLocales, translations } from 'i18n';
 import { ROOT_NODE, APP_TITLE } from 'config';
-import LocaleProvider from 'bits/locale';
+import LocaleProvider from 'runtime/bits/locale';
+import GlobalThemeProvider from 'runtime/bits/theme';
 import { IntlProvider } from 'react-intl';
 import { Helmet } from 'react-helmet';
-
-import AppContainer from 'containers/App';
+import HotApp from 'runtime/HotApp';
+import configureStore from 'runtime/configureStore';
 
 const initialState = {};
 const history = createHistory();
@@ -22,12 +22,7 @@ const store = configureStore(initialState, history);
 const render = async (messages) => {
   if (!window.Intl) {
     await import('intl');
-    await Promise.all([
-      // add required languages here
-      // todo: externalize the import logic so index.js must not be changed
-      import('intl/locale-data/jsonp/en.js'),
-      import('intl/locale-data/jsonp/de.js'),
-    ]);
+    await loadLocales;
   }
   ReactDOM.render(
     (
@@ -46,7 +41,9 @@ const render = async (messages) => {
                 messages={messages[locale]}
               >
                 <ConnectedRouter history={history}>
-                  <AppContainer />
+                  <GlobalThemeProvider>
+                    <HotApp />
+                  </GlobalThemeProvider>
                 </ConnectedRouter>
               </IntlProvider>
             </React.Fragment>
@@ -57,13 +54,13 @@ const render = async (messages) => {
     document.getElementById(ROOT_NODE),
   );
 };
-render(i18nMessages);
+render(translations);
 
 if (module.hot) {
-  module.hot.accept(['./i18n', './containers/App'], () => {
+  module.hot.accept(['../../src/i18n', './HotApp'], () => {
     ReactDOM.unmountComponentAtNode(document.getElementById(ROOT_NODE));
     // eslint-disable-next-line global-require
-    render(require('./i18n').default);
+    render(require('../../src/i18n').translations);
   });
 }
 

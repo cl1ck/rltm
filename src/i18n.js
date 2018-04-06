@@ -7,7 +7,12 @@ import de from 'translations/de.json';
 addLocaleData(enLocale);
 addLocaleData(deLocale);
 
-export default {
+export const translations = {
   en,
   de,
 };
+
+export const loadLocales = () => Promise.all([
+  import('intl/locale-data/jsonp/en.js'),
+  import('intl/locale-data/jsonp/de.js'),
+]);

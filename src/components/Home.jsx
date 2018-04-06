@@ -2,20 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
-const StyledDiv = styled.div`
-  margin: 0 auto;
+const Body = styled.div`
   display: flex;
-  min-height: 100%;
-  padding: 0;
+  min-height: 100vh;
   flex-direction: column;
 `;
 
 const Home = () => (
-  <StyledDiv>
-    <h1>
-      <FormattedMessage id="containers.App.login" />
-    </h1>
-  </StyledDiv>
+  <FormattedMessage id="components.Home.helloWorld" />
 );
 
 export default Home;
