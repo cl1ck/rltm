@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Footer = styled.footer`
-  background-color: ${({theme}) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 const PageWithHeaderAndFooter = ({ component: Component, ...rest }) => (
