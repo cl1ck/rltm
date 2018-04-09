@@ -64,7 +64,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
-    "redux-bits": "^1.0.1",
+    "redux-bits": "^1.0.2",
     "redux-devtools-extension": "^2.13.2",
     "reselect": "^3.0.1",
     "snake-case": "^2.1.0",

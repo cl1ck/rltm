@@ -1,37 +1,58 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PageEmpty from 'layouts/PageEmpty';
+import { Route } from 'react-router';
+import media from 'layouts/media';
 
-const Header = styled.header`
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  ${media.tablet`
+    flex-direction: column;
+    width: 100%;
+  `}
 `;
 
-const Container = styled.div`
+const Main = styled.main`
+  flex: 1 0 auto;
   display: flex;
-  flex: 1;
+`;
+
+const Header = styled.header`
+  width: 100%;
 `;
 
 const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.primary};
+  width: 100%;
 `;
 
-const PageWithHeaderAndFooter = ({ component: Component, ...rest }) => (
-  <PageEmpty
+
+const PageWithHeaderAndFooter = ({
+  header: HeaderContent,
+  component: Component,
+  footer: FooterContent,
+  ...rest
+}) => (
+  <Route
     {...rest}
     component={matchProps => (
-      <Fragment>
-        <Header>Header</Header>
-        <Container>
+      <Body>
+        <Header><HeaderContent {...matchProps} /></Header>
+        <Main>
           <Component {...matchProps} />
-        </Container>
-        <Footer>Footer</Footer>
-      </Fragment>
+        </Main>
+        <Footer><FooterContent {...matchProps} /></Footer>
+      </Body>
     )}
   />
 );
 
 PageWithHeaderAndFooter.propTypes = {
+  header: PropTypes.func.isRequired,
   component: PropTypes.func.isRequired,
+  footer: PropTypes.func.isRequired,
 };
 
 export default PageWithHeaderAndFooter;

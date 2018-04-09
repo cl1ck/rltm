@@ -24,28 +24,40 @@ The following commands are available for development:
 # Libraries and tools
 
 ## Development
-- [Webpack](https://webpack.js.org/)
-- [Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
-- [Babel](https://babeljs.io)
+- [x] [Webpack](https://webpack.js.org/)
+- [x] [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) with hot reloading
+- [x] [Babel](https://babeljs.io)
+
+## Server side rendering
+- [ ] todo
 
 ## State management
-- [Redux](https://redux.js.org/)
+- [x] [Redux](https://redux.js.org/)
+- [x] [Redux Bits](https://github.com/cl1ck/redux-bits)
+
+## Routing
+- [x] [React Router](https://github.com/ReactTraining/react-router)
 
 ## GUI component, design and theming
-- [React](https://reactjs.org/)
-- [Styled Components](https://www.styled-components.com/)
-- [Styled Theming](https://github.com/styled-components/styled-theming)
-- [Popmotion](https://popmotion.io/)
-- [Storybook](https://storybook.js.org/)
+- [x] [React](https://reactjs.org/)
+- [x] [Styled Components](https://www.styled-components.com/)
+- [x] [Styled Theming](https://github.com/styled-components/styled-theming)
+- [ ] [Popmotion](https://popmotion.io/)
+- [ ] [Storybook](https://storybook.js.org/)
+
+## SEO
+- [x] [React Helmet](https://github.com/nfl/react-helmet)
+
+## I18N
+- [x] [React Intl](https://github.com/yahoo/react-intl)
 
 ## Code quality
-- [ESLint](https://eslint.org/)
-- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+- [x] [ESLint](https://eslint.org/)
+- [x] [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 ## Testing
-- [Jest](https://facebook.github.io/jest/)
-- [Enzyme](https://airbnb.io/enzyme/)
+- [x] [Jest](https://facebook.github.io/jest/)
+- [x] [Enzyme](https://airbnb.io/enzyme/)
 
 ## Libraries
-- [Immutable](https://facebook.github.io/immutable-js/)
 

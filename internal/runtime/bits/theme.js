@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createContainer } from 'redux-bits';
 import { ThemeProvider } from 'styled-components';
-import { createSelector, createStructuredSelector } from 'reselect';
+import { createSelector } from 'reselect';
 import themes from 'themes';
 
-export const name = 'styledComponentsTheme';
+export const name = 'themes';
 
 export const state = {
   activeTheme: 'main',
@@ -13,47 +14,46 @@ export const state = {
 
 export const actions = {
   changeTheme: theme => theme,
-  addTheme: (name, themeData) => ({ name, themeData }),
+  addTheme: (themeName, themeData) => ({ themeName, themeData }),
 };
 
 export const reducers = {
   changeTheme: (draft, theme) => {
-    draft.theme = theme;
+    draft.activeTheme = theme;
   },
-  addTheme: (draft, { name, themeData }) => draft.themes[name] = themeData,
+  addTheme: (draft, { themeName, themeData }) => {
+    draft.themes[themeName] = themeData;
+  },
 };
 
 const activeThemeName = draft => draft.activeTheme;
 const themeData = draft => draft.themes;
-const activeTheme = createSelector(
+const activeThemeData = createSelector(
   [activeThemeName, themeData],
-  (name, themes) => themes[name],
+  (themeName, data) => data[themeName],
 );
 const availableThemes = draft => Object.keys(draft.themes);
-const themeSelector = createStructuredSelector({
-  activeTheme,
-  activeThemeName,
-  availableThemes,
-});
 
 export const selectors = {
-  activeTheme,
+  activeThemeData,
   activeThemeName,
   availableThemes,
-  theme: themeSelector,
 };
 
 const GlobalTheme = createContainer(name, actions, selectors);
 
-const GlobalThemeProvider = ({children}) => (
-  <GlobalTheme selector="activeTheme">
-    {({ activeTheme }) => (
-      <ThemeProvider theme={activeTheme}>
+const GlobalThemeProvider = ({ children }) => (
+  <GlobalTheme selector="activeThemeData">
+    {({ activeThemeData: theme }) => (
+      <ThemeProvider theme={theme}>
         {React.Children.only(children)}
       </ThemeProvider>
     )}
   </GlobalTheme>
 );
 
-export default GlobalThemeProvider;
+GlobalThemeProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
+export default GlobalThemeProvider;

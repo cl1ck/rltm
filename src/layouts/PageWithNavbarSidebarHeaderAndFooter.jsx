@@ -1,53 +1,87 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PageEmpty from 'layouts/PageEmpty';
+import { Route } from 'react-router';
+import media from 'layouts/media';
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+`;
 
 const Header = styled.header`
+  width: 100%;
 `;
 
-const Container = styled.div`
+const Main = styled.main`
+  flex: 1 0 auto;
   display: flex;
-  flex: 1;
-`;
 
-const Content = styled.main`
-  flex: 1;
-`;
-
-const Navigation = styled.nav`
-  flex: 0 0 12em;
-  order: -1;
-`;
-
-const ASide = styled.aside`
-  flex: 0 0 12em;
+  ${media.tablet`
+    flex-direction: column;
+  `}
 `;
 
 const Footer = styled.footer`
+  width: 100%;
 `;
 
-const PageWithHeaderAndFooter = ({ component: Component, ...rest }) => (
-  <PageEmpty
+const Article = styled.article`
+  flex: 1 0 auto;
+`;
+
+const Nav = styled.nav`
+  order: -1;
+
+  ${media.tablet`
+    width: 100%;
+  `}
+`;
+
+const ASide = styled.aside`
+  ${media.tablet`
+    width: 100%;
+  `}
+`;
+
+const PageWithNavbarSidebarHeaderAndFooter = ({
+  component: Component,
+  navbar: Navigation,
+  sidebar: Sidebar,
+  header: HeaderContent,
+  footer: FooterContent,
+  ...rest
+}) => (
+  <Route
     {...rest}
     component={matchProps => (
-      <Fragment>
-        <Header>Header</Header>
-        <Container>
-          <Content>
+      <Body>
+        <Header><HeaderContent {...matchProps} /></Header>
+        <Main>
+          <Article>
             <Component {...matchProps} />
-          </Content>
-          <Navigation>Navigation</Navigation>
-          <ASide>Ads</ASide>
-        </Container>
-        <Footer>Footer</Footer>
-      </Fragment>
+          </Article>
+          <Nav>
+            <Navigation {...matchProps} />
+          </Nav>
+          <ASide>
+            <Sidebar {...matchProps} />
+          </ASide>
+        </Main>
+        <Footer><FooterContent {...matchProps} /></Footer>
+      </Body>
     )}
   />
 );
 
-PageWithHeaderAndFooter.propTypes = {
+PageWithNavbarSidebarHeaderAndFooter.propTypes = {
   component: PropTypes.func.isRequired,
+  navbar: PropTypes.func.isRequired,
+  sidebar: PropTypes.func.isRequired,
+  header: PropTypes.func.isRequired,
+  footer: PropTypes.func.isRequired,
 };
 
-export default PageWithHeaderAndFooter;
+export default PageWithNavbarSidebarHeaderAndFooter;

@@ -10,6 +10,7 @@ const development = {
     port: 3000,
     hot: true,
     public: 'node.cl1ck0ne.net:443',
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

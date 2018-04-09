@@ -7881,10 +7881,11 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-bits@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/redux-bits/-/redux-bits-1.0.1.tgz#3b1463709e5d9703d02ffc8036fb0b0b36f56933"
+redux-bits@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/redux-bits/-/redux-bits-1.0.2.tgz#c027637749c65f48fd9b7ed0aea63416dcca0c8c"
   dependencies:
+    babel-preset-react "^6.24.1"
     immer "^1.2.1"
     prop-types "^15.6.1"
     react "^16.2.0"
