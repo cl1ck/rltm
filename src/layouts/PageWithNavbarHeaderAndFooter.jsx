@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Route } from 'react-router';
-import media from 'layouts/media';
+import { styles } from 'layouts/media';
 
 const Body = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const Main = styled.main`
   flex: 1 0 auto;
   display: flex;
 
-  ${media.tablet`
+  ${styles.tablet`
     flex-direction: column;
   `}
 `;
@@ -35,13 +35,7 @@ const Article = styled.article`
 const Nav = styled.nav`
   order: -1;
 
-  ${media.tablet`
-    width: 100%;
-  `}
-`;
-
-const ASide = styled.aside`
-  ${media.tablet`
+  ${styles.tablet`
     width: 100%;
   `}
 `;

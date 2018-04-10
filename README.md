@@ -41,7 +41,11 @@ The following commands are available for development:
 ## GUI component, design and theming
 - [x] [React](https://reactjs.org/)
 - [x] [Styled Components](https://www.styled-components.com/)
-- [x] [Styled Theming](https://github.com/styled-components/styled-theming)
+- [x] [Polished](https://polished.js.org/docs/)
+
+### Bonus UI libraries
+- [x] [react-responsive](https://github.com/contra/react-responsive) for media queries in React
+- [x] [react-icons](https://gorangajic.github.io/react-icons/)
 - [ ] [Popmotion](https://popmotion.io/)
 - [ ] [Storybook](https://storybook.js.org/)
 

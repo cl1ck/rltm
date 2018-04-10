@@ -1,18 +1,25 @@
 import { css } from 'styled-components';
 
-const sizes = {
+export const sizes = {
   desktop: 1024,
   tablet: 768,
   phone: 376,
 };
 
-const media = Object.keys(sizes).reduce((acc, size) => {
-  acc[size] = (...args) => css`
-    @media (max-width: ${sizes[size]}px) {
-      ${css(...args)}
-    }
-  `;
+export const queries = Object.keys(sizes).reduce((acc, size) => {
+  Object.assign(acc, {
+    [size]: `(max-width: ${sizes[size]}px)`,
+  });
   return acc;
 }, {});
 
-export default media;
+export const styles = Object.keys(sizes).reduce((acc, size) => {
+  Object.assign(acc, {
+    [size]: (...args) => css`
+      @media (max-width: ${sizes[size]}px) {
+        ${css(...args)}
+      }
+    `,
+  });
+  return acc;
+}, {});

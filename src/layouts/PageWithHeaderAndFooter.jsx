@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Route } from 'react-router';
-import media from 'layouts/media';
+import { styles } from 'layouts/media';
 
 const Body = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 
-  ${media.tablet`
+  ${styles.tablet`
     flex-direction: column;
     width: 100%;
   `}

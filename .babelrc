@@ -15,11 +15,12 @@
   ],
   "plugins": [
     [
-      "babel-plugin-styled-components", 
+      "styled-components", 
       {
         "ssr": true
       },
-      "react-hot-loader/babel"
-    ]
-  ]
+    ],
+    "react-hot-loader/babel",
+    "polished",
+  ],
 }

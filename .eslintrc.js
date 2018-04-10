@@ -28,6 +28,11 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
+    'jsx-a11y/anchor-is-valid': ['error', {
+        'components': ['Link'],
+        'specialLink': ['to'],
+        'aspects': ['noHref', 'invalidHref', 'preferButton'],
+      }],
 	},
 	settings: {
 	  'import/resolver': {

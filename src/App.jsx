@@ -3,10 +3,10 @@ import { Switch } from 'react-router-dom';
 import PageWithNavbarSidebarHeaderAndFooter from 'layouts/PageWithNavbarSidebarHeaderAndFooter';
 import PageWithNavbarHeaderAndFooter from 'layouts/PageWithNavbarHeaderAndFooter';
 import PageWithHeaderAndFooter from 'layouts/PageWithHeaderAndFooter';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import Navbar from 'components/Navbar';
-import Sidebar from 'components/Sidebar';
+import Header from 'components/Page/Header';
+import Footer from 'components/Page/Footer';
+import Navbar from 'components/Page/Navbar';
+import Sidebar from 'components/Page/Sidebar';
 import Home from 'components/Home';
 
 import 'assets/css/main.css';
