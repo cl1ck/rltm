@@ -5,8 +5,7 @@ import Link from 'components/Page/Navbar/NavbarLink';
 const Navbar = () => (
   <ResponsiveNavbar title="Navbar">
     <Link to="/">Home</Link>
-    <Link to="/nav">With Navbar</Link>
-    <Link to="/side">With Sidebar</Link>
+    <Link to="/page1">Page 1</Link>
   </ResponsiveNavbar>
 );
 

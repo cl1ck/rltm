@@ -4,9 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 const Home = () => (
-  <React.Fragment>
-    <FormattedMessage id="components.Home.helloWorld" /><br />
-  </React.Fragment>
+  <div>Page 1</div>
 );
 
 export default Home;

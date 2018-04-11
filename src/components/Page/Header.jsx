@@ -4,28 +4,9 @@ import { APP_TITLE } from 'config';
 import MenuStateProvider from 'bits/menu';
 import { MdMenu } from 'react-icons/lib/md';
 import { styles } from 'layouts/media';
+import MenuButton from 'components/Page/Navbar/MenuButton';
 
 const transitionTime = '0.5s';
-const OpenButton = styled.button`
-  position: absolute;
-  left: 0;
-  top: 2px;
-  cursor: pointer;
-  visibility: hidden;
-  border: 0;
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.primaryText};
-  transition: opacity ${transitionTime};
-
-  &:focus {
-    outline:0;
-  }
-
-  ${styles.tablet`
-    opacity: ${({ visible }) => (visible ? 100 : 0)};
-    visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
-  `}
-`;
 
 const Header = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
@@ -39,9 +20,9 @@ export default () => (
   <MenuStateProvider>
     {({ isOpen, showMenu }) => (
       <Header>
-        <OpenButton onClick={showMenu} visible={!isOpen}>
+        <MenuButton onClick={showMenu} visible={!isOpen}>
           <MdMenu />
-        </OpenButton>
+        </MenuButton>
         {APP_TITLE}
       </Header>
     )}
