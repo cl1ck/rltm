@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { styles } from 'layouts/media';
 import MenuStateProvider from 'bits/menu';
+import { MdMenu, MdClose } from 'react-icons/lib/md';
 
 const NavbarContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
@@ -24,9 +25,33 @@ const NavbarContainer = styled.div`
   `}
 `;
 
+const Button = styled.button`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  cursor: pointer;
+  visibility: hidden;
+  border: 0;
+  background-color: transparent;
+
+  &:focus {
+    outline:0;
+  }
+
+  ${styles.tablet`
+    visibility: visible;
+  `}
+`;
+
 const Title = styled.div`
   font-weight: bold;
   padding: 4px;
+
+
+  ${styles.tablet`
+    padding-left: 24px;
+  `}
 `;
 
 const List = styled.ul`
@@ -39,12 +64,15 @@ const List = styled.ul`
 const ResponsiveNavbar = ({ title, children }) => (
   <MenuStateProvider>
     {({ isOpen, toggleMenu }) => (
-      <NavbarContainer visible={isOpen}>
-        <Title onClick={toggleMenu}>{title}</Title>
-        <List>
-          {children}
-        </List>
-      </NavbarContainer>
+      <React.Fragment>
+        <Button onClick={toggleMenu}>
+          { isOpen ? <MdClose /> : <MdMenu /> }
+        </Button>
+        <NavbarContainer visible={isOpen}>
+          <Title>{title}</Title>
+          <List>{children}</List>
+        </NavbarContainer>
+      </React.Fragment>
     )}
   </MenuStateProvider>
 );

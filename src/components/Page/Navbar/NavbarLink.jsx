@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { lighten, darken } from 'polished';
+import MenuStateProvider from 'bits/menu';
 
 const Item = styled.li`
   a {
@@ -35,7 +36,13 @@ const NavbarLink = withRouter(({ children, to, location }) => {
     );
   }
   return (
-    <Item><Link to={to}>{children}</Link></Item>
+    <MenuStateProvider>
+      {({ hideMenu }) => (
+        <Item>
+          <Link to={to} onClick={hideMenu}>{children}</Link>
+        </Item>
+      )}
+    </MenuStateProvider>
   );
 });
 
