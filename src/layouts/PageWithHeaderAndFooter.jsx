@@ -8,6 +8,8 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.backgroundText};
 
   ${styles.tablet`
     flex-direction: column;

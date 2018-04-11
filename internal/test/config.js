@@ -1,6 +1,6 @@
 module.exports = {
   setupFiles: [
-    '<rootDir>/dev/test/setup.js',
+    '<rootDir>/internal/test/setup.js',
   ],
   snapshotSerializers: [
     '<rootDir>/node_modules/enzyme-to-json/serializer',
@@ -13,7 +13,7 @@ module.exports = {
     '\\.css$': '<rootDir>/src/test/mocks/styleMock.js',
   },
   transform: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/dev/test/transformer/fileTransformer.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/internal/test/transformer/fileTransformer.js',
     '\\.jsx?$': '<rootDir>/node_modules/babel-jest',
   },
   transformIgnorePatterns: [
@@ -22,6 +22,7 @@ module.exports = {
   rootDir: '../../',
   roots: [
     '<rootDir>/src',
+    '<rootDir>/internal',
   ],
   unmockedModulePathPatterns: [
     '<rootDir>/node_modules/react',

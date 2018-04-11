@@ -1,8 +1,15 @@
-export default {
-  colors: {
-    primary: '#8fbaf7',
-    secondary: '#f4cb8d',
-    background: '#eaecef',
-    text: '#000',
-  },
+import buildColorScheme from 'tools/buildColorScheme';
+import common from 'themes/common';
+import extend from 'deep-extend';
+
+const colors = buildColorScheme({
+  primary: '#2962ff',
+  secondary: '#ff1744',
+  background: '#fcfcfc',
+});
+
+const theme = {
+  colors: (colors),
 };
+
+export default extend(theme, common);

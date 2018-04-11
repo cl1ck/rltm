@@ -3,6 +3,8 @@ import { createStore } from 'redux-bits';
 import { bits, reducers, middlewares, enhancers } from 'store';
 import defaultBits from 'runtime/bits';
 
+let STORE;
+
 const configureStore = (initialState = {}, history) => {
   const config = {
     bits: [
@@ -21,19 +23,19 @@ const configureStore = (initialState = {}, history) => {
     initialState,
   };
 
-  const store = createStore(config);
-
-  if (module.hot) {
-    module.hot.accept(['../../src/store.js', './bits/index.js'], () => {
-      const nextBits = [
-        ...bits,
-        ...defaultBits,
-      ];
-      store.replaceBits(nextBits, reducers);
-    });
-  }
-
-  return store;
+  STORE = createStore(config);
+  return STORE;
 };
 
 export default configureStore;
+
+if (module.hot) {
+  module.hot.accept(['../../src/store.js', './bits/index.js'], () => {
+    console.log('hot');
+    const nextBits = [
+      ...bits,
+      ...defaultBits,
+    ];
+    STORE.replaceBits(nextBits, reducers);
+  });
+}

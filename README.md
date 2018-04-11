@@ -38,7 +38,7 @@ The following commands are available for development:
 ## Routing
 - [x] [React Router](https://github.com/ReactTraining/react-router)
 
-## GUI component, design and theming
+## GUI design and theming
 - [x] [React](https://reactjs.org/)
 - [x] [Styled Components](https://www.styled-components.com/)
 - [x] [Polished](https://polished.js.org/docs/)
@@ -46,6 +46,7 @@ The following commands are available for development:
 ### Bonus UI libraries
 - [x] [react-responsive](https://github.com/contra/react-responsive) for media queries in React
 - [x] [react-icons](https://gorangajic.github.io/react-icons/)
+- [x] [react-swipeable](https://github.com/dogfessional/react-swipeable)
 - [ ] [Popmotion](https://popmotion.io/)
 - [ ] [Storybook](https://storybook.js.org/)
 

@@ -3,7 +3,6 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { lighten, darken } from 'polished';
 import MenuStateProvider from 'bits/menu';
 
 const Item = styled.li`
@@ -14,16 +13,16 @@ const Item = styled.li`
   }
 
   a, a:visited, a:active {
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.primaryText};
   }
 
   a:hover {
-    background-color: ${({ theme }) => lighten(0.1, theme.colors.primary)};
+    background-color: ${({ theme }) => theme.colors.primaryLight};
   }
 `;
 
 const ActiveItem = styled.li`
-  background-color: ${({ theme }) => darken(0.1, theme.colors.primary)};
+  background-color: ${({ theme }) => theme.colors.primaryDark};
   padding: 10px 4px;
   display: block;
   cursor: default;

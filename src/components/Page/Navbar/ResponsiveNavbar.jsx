@@ -3,51 +3,55 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { styles } from 'layouts/media';
 import MenuStateProvider from 'bits/menu';
-import { MdMenu, MdClose } from 'react-icons/lib/md';
+import { MdClose } from 'react-icons/lib/md';
+
+const transitionTime = '0.5s';
 
 const NavbarContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primaryText};
   width: 200px;
   height: 100%;
   margin: 0;
   padding: 0;
-  transition: opacity 0.2s 0s, visibility 0s 0.2s;
+  transition: visibility ${transitionTime}, opacity ${transitionTime} 0s, left ${transitionTime};
 
   ${styles.tablet`
     position: fixed;
-    left: 0;
+    left: ${({ visible }) => (visible ? 0 : '-200px')};
     top: 0;
-    z-index: 1;
+    z-index: ${props => props.theme.layers.foreground};
     overflow-x: hidden;
     visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
-    opacity: 80;
-    transition: opacity 0.2s 0s, visibility 0s 0.2s;
+    opacity: ${({ visible }) => (visible ? 80 : 0)};
+    transition: visibility ${transitionTime}, opacity ${transitionTime} 0s, left ${transitionTime};
   `}
 `;
 
-const Button = styled.button`
-  position: fixed;
+const CloseButton = styled.button`
+  position: absolute;
   left: 0;
-  top: 0;
-  z-index: 2;
+  top: 2px;
   cursor: pointer;
   visibility: hidden;
   border: 0;
   background-color: transparent;
+  color: ${({ theme }) => theme.colors.primaryText};
+  transition: opacity ${transitionTime};
 
   &:focus {
     outline:0;
   }
 
   ${styles.tablet`
-    visibility: visible;
+    opacity: ${({ visible }) => (visible ? 100 : 0)};
+    visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
   `}
 `;
 
 const Title = styled.div`
   font-weight: bold;
   padding: 4px;
-
 
   ${styles.tablet`
     padding-left: 24px;
@@ -61,15 +65,23 @@ const List = styled.ul`
   padding: 0;
 `;
 
+const SwipeArea = styled.div`
+  width: 30px;
+  background-color: transparent;
+  z-index: ${props => props.theme.layers.touch}
+`;
+
 const ResponsiveNavbar = ({ title, children }) => (
   <MenuStateProvider>
-    {({ isOpen, toggleMenu }) => (
+    {({ isOpen, hideMenu }) => (
       <React.Fragment>
-        <Button onClick={toggleMenu}>
-          { isOpen ? <MdClose /> : <MdMenu /> }
-        </Button>
         <NavbarContainer visible={isOpen}>
-          <Title>{title}</Title>
+          <Title>
+            <CloseButton onClick={hideMenu} visible={isOpen}>
+              <MdClose />
+            </CloseButton>
+            {title}
+          </Title>
           <List>{children}</List>
         </NavbarContainer>
       </React.Fragment>

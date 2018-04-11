@@ -9,7 +9,6 @@ import 'normalize.css';
 import { loadLocales, translations } from 'i18n';
 import { ROOT_NODE, APP_TITLE } from 'config';
 import LocaleProvider from 'runtime/bits/locale';
-import GlobalThemeProvider from 'runtime/bits/theme';
 import { IntlProvider } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import HotApp from 'runtime/HotApp';
@@ -41,9 +40,7 @@ const render = async (messages) => {
                 messages={messages[locale]}
               >
                 <ConnectedRouter history={history}>
-                  <GlobalThemeProvider>
-                    <HotApp />
-                  </GlobalThemeProvider>
+                  <HotApp />
                 </ConnectedRouter>
               </IntlProvider>
             </React.Fragment>

@@ -9,6 +9,8 @@ const Body = styled.div`
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.backgroundText};
 `;
 
 const Header = styled.header`
