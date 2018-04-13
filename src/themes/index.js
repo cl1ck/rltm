@@ -1,7 +1,7 @@
 import main from 'themes/main';
-import dark from 'themes/dark';
+import alternate from 'themes/alternate';
 
 export default {
   main,
-  dark,
+  alternate,
 };

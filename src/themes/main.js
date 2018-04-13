@@ -2,14 +2,15 @@ import buildColorScheme from 'tools/buildColorScheme';
 import common from 'themes/common';
 import extend from 'deep-extend';
 
-const colors = buildColorScheme({
+export const colors = {
   primary: '#2962ff',
   secondary: '#ff1744',
+  highlight: '#b4ff2b',
   background: '#fcfcfc',
-});
+};
 
 const theme = {
-  colors: (colors),
+  colors: buildColorScheme(colors),
 };
 
 export default extend(theme, common);

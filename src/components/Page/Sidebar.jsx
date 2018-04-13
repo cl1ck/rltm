@@ -4,11 +4,12 @@ import { styles } from 'layouts/media';
 
 const Sidebar = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primaryText};
   min-height: 100%;
-  width: 120px;
+  width: 100%;
 
-  ${styles.tablet`
-    width: 100%;
+  ${styles.desktop`
+    width: 120px;
   `}
 `;
 

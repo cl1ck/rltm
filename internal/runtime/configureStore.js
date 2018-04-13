@@ -1,6 +1,7 @@
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import { createStore } from 'redux-bits';
 import { bits, reducers, middlewares, enhancers } from 'store';
+import thunk from 'redux-thunk';
 import defaultBits from 'runtime/bits';
 
 let STORE;
@@ -18,6 +19,7 @@ const configureStore = (initialState = {}, history) => {
     middlewares: [
       ...middlewares,
       routerMiddleware(history),
+      thunk,
     ],
     enhancers,
     initialState,
@@ -31,7 +33,6 @@ export default configureStore;
 
 if (module.hot) {
   module.hot.accept(['../../src/store.js', './bits/index.js'], () => {
-    console.log('hot');
     const nextBits = [
       ...bits,
       ...defaultBits,

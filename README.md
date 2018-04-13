@@ -1,6 +1,6 @@
 # rltm
 
-Realtime reactive framework.
+Realtime reactive framework. Mobile first.
 
 # Usage
 
@@ -42,13 +42,17 @@ The following commands are available for development:
 - [x] [React](https://reactjs.org/)
 - [x] [Styled Components](https://www.styled-components.com/)
 - [x] [Polished](https://polished.js.org/docs/)
+- [ ] [Storybook](https://storybook.js.org/)
 
 ### Bonus UI libraries
 - [x] [react-responsive](https://github.com/contra/react-responsive) for media queries in React
+- [x] [styled-transition-group](https://github.com/gabiseabra/styled-transition-group)
 - [x] [react-icons](https://gorangajic.github.io/react-icons/)
 - [x] [react-swipeable](https://github.com/dogfessional/react-swipeable)
-- [ ] [Popmotion](https://popmotion.io/)
-- [ ] [Storybook](https://storybook.js.org/)
+
+### Animation
+- [x] [react-transition-group](https://github.com/reactjs/react-transition-group)
+- [ ] [Popmotion](https://popmotion.io/) for advanced animation
 
 ## SEO
 - [x] [React Helmet](https://github.com/nfl/react-helmet)

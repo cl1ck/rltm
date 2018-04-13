@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { APP_TITLE } from 'config';
 import MenuStateProvider from 'bits/menu';
 import { MdMenu } from 'react-icons/lib/md';
-import { styles } from 'layouts/media';
 import MenuButton from 'components/Page/Navbar/MenuButton';
 
 const transitionTime = '0.5s';

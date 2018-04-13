@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import 'normalize.css';
 import { loadLocales, translations } from 'i18n';
 import { ROOT_NODE, APP_TITLE } from 'config';
 import LocaleProvider from 'runtime/bits/locale';
@@ -13,6 +12,7 @@ import { IntlProvider } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import HotApp from 'runtime/HotApp';
 import configureStore from 'runtime/configureStore';
+import globalStyles from 'styles/global';
 
 const initialState = {};
 const history = createHistory();
@@ -23,6 +23,7 @@ const render = async (messages) => {
     await import('intl');
     await loadLocales;
   }
+  globalStyles();
   ReactDOM.render(
     (
       <Provider store={store}>
@@ -54,7 +55,7 @@ const render = async (messages) => {
 render(translations);
 
 if (module.hot) {
-  module.hot.accept(['../../src/i18n', './HotApp'], () => {
+  module.hot.accept(['../../src/i18n', './HotApp', '../../src/styles/global'], () => {
     ReactDOM.unmountComponentAtNode(document.getElementById(ROOT_NODE));
     // eslint-disable-next-line global-require
     render(require('../../src/i18n').translations);

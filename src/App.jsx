@@ -1,15 +1,11 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
 import HolyGrailLayoutRoute from 'layouts/HolyGrailLayoutRoute';
 import NavbarLayoutRoute from 'layouts/NavbarLayoutRoute';
-import FullPageLayoutRoute from 'layouts/FullPageLayoutRoute';
 import Home from 'components/Home';
 import Page1 from 'components/Page1';
 
-import 'assets/css/main.css';
-
 const App = () => (
-  <Switch>
+  <React.Fragment>
     <HolyGrailLayoutRoute
       exact
       path="/"
@@ -19,7 +15,7 @@ const App = () => (
       path="/page1"
       component={Page1}
     />
-  </Switch>
+  </React.Fragment>
 );
 
 export default App;

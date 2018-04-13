@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { styles, queries } from 'layouts/media';
+import { styles } from 'layouts/media';
 import MenuStateProvider from 'bits/menu';
 import MenuButton from 'components/Page/Navbar/MenuButton';
 import { MdClose } from 'react-icons/lib/md';
@@ -11,33 +11,38 @@ import MediaQuery from 'react-responsive';
 const transitionTime = '0.5s';
 
 const NavbarContainer = styled.div`
+  height: 100vh;
+  position: fixed;
+  left: ${({ visible }) => (visible ? 0 : '-200px')};
+  top: 0;
+  z-index: ${props => props.theme.layers.foreground};
+  overflow-x: hidden;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.primaryText};
   width: 200px;
   margin: 0;
   padding: 0;
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  opacity: ${({ visible }) => (visible ? 80 : 0)};
   transition: visibility ${transitionTime}, opacity ${transitionTime} 0s, left ${transitionTime};
-  min-height: 100%;
 
-  ${styles.tablet`
-    height: 100vh;
-    position: fixed;
-    left: ${({ visible }) => (visible ? 0 : '-200px')};
-    top: 0;
-    z-index: ${props => props.theme.layers.foreground};
-    overflow-x: hidden;
-    visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
-    opacity: ${({ visible }) => (visible ? 80 : 0)};
-    transition: visibility ${transitionTime}, opacity ${transitionTime} 0s, left ${transitionTime};
+  ${styles.desktop`
+    height: 100%;
+    position: relative;
+    visibility: visible;
+    opacity: 100;
+    left: 0;
+    transition: initial;
   `}
 `;
 
 const Title = styled.div`
-  font-weight: bold;
-  padding: 4px;
+  margin-bottom: 30px;
+  padding-left: 24px;
+  display: block;
 
-  ${styles.tablet`
-    padding-left: 24px;
+  ${styles.desktop`
+    display: none;
   `}
 `;
 
@@ -63,12 +68,12 @@ const Swipe = styled(Swipeable)`
   height: 100%;
 `;
 
-const ResponsiveNavbar = ({ title, children }) => (
+const ResponsiveNavbar = ({ children }) => (
   <MenuStateProvider>
     {({ isOpen, hideMenu, showMenu }) => (
       <React.Fragment>
         <Swipeable onSwipingRight={showMenu}>
-          <SwipeArea/>
+          <SwipeArea />
         </Swipeable>
         <Swipe onSwipingLeft={hideMenu}>
           <NavbarContainer visible={isOpen}>
@@ -76,7 +81,6 @@ const ResponsiveNavbar = ({ title, children }) => (
               <MenuButton onClick={hideMenu} visible={isOpen}>
                 <MdClose />
               </MenuButton>
-              {title}
             </Title>
             <List>{children}</List>
           </NavbarContainer>
@@ -87,7 +91,6 @@ const ResponsiveNavbar = ({ title, children }) => (
 );
 
 ResponsiveNavbar.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 

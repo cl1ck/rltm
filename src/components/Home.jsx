@@ -1,12 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
+import { API, Pending, Failed, Success } from 'components/API';
+
+const Article = styled.article`
+  padding: 4px;
+`;
 
 const Home = () => (
-  <React.Fragment>
-    <FormattedMessage id="components.Home.helloWorld" /><br />
-  </React.Fragment>
+  <Article>
+    <h1><FormattedMessage id="components.Home.helloWorld" /></h1>
+    <API url="https://jsonpladceholder.typicode.com/posts/1" method="get">
+      <Pending>...</Pending>
+      <Failed>{error => JSON.stringify(error)}</Failed>
+      <Success>{({ body }) => body}</Success>
+    </API>
+  </Article>
 );
 
 export default Home;

@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Route } from 'react-router';
 import { styles } from 'layouts/media';
 import FullPageLayout from 'layouts/FullPageLayout';
 import Navbar from 'components/Page/Navbar';
 
-const Article = styled.article`
-  flex: 1 0 auto;
+const Main = styled.main`
+  flex: 1;
 `;
 
 const Nav = styled.nav`
   order: -1;
+  width: 100%;
 
-  ${styles.tablet`
-    width: 100%;
+  ${styles.desktop`
+    width: auto;
   `}
 `;
 
 const NavbarLayout = ({ children }) => (
   <FullPageLayout>
-    <Article>
+    <Main>
       {children}
-    </Article>
+    </Main>
     <Nav><Navbar /></Nav>
   </FullPageLayout>
 );

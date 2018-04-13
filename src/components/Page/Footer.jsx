@@ -8,18 +8,31 @@ const Footer = styled.div`
   padding: 2px;
 `;
 
-const ThemeLink = styled.a`
+const StyledLink = styled.a`
   color: ${({ theme }) => theme.colors.secondaryText};
   text-decoration: underline;
   cursor: pointer;
 `;
 
-export default () => (
+const ThemeLink = ({ theme, separator }) => (
   <ThemeProvider>
     {({ changeTheme }) => (
+      <React.Fragment>
+        {separator && ' | '}
+        <StyledLink onClick={() => changeTheme(theme)}>{theme}</StyledLink>
+      </React.Fragment>
+    )}
+  </ThemeProvider>
+);
+
+export default () => (
+  <ThemeProvider selector="availableThemes">
+    {({ availableThemes }) => (
       <Footer>
-        Theme: <ThemeLink onClick={() => changeTheme('dark')}>Dark</ThemeLink>
-        &nbsp;|&nbsp;<ThemeLink onClick={() => changeTheme('main')}>Main</ThemeLink>
+        {'Theme: '}
+        {availableThemes.map((theme, index) => (
+          <ThemeLink key={theme} theme={theme} separator={index !== 0}></ThemeLink>
+        ))}
       </Footer>
     )}
   </ThemeProvider>

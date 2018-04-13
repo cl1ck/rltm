@@ -43,6 +43,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-eslint": "^8.2.2",
     "babel-polyfill": "^6.26.0",
     "camelcase": "^5.0.0",
@@ -52,7 +53,6 @@
     "history": "^4.7.2",
     "immer": "^1.2.1",
     "intl": "^1.2.5",
-    "normalize.css": "^8.0.0",
     "offline-plugin": "^4.9.0",
     "polished": "^1.9.2",
     "prop-types": "^15.6.1",
@@ -72,12 +72,15 @@
     "react-swipeable": "^4.2.1",
     "react-transition-group": "^2.3.0",
     "redux": "^3.7.2",
-    "redux-bits": "^2.0.4",
+    "redux-bits": "^2.0.5",
     "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "snake-case": "^2.1.0",
     "styled-components": "^3.2.5",
-    "styled-theming": "^2.2.0"
+    "styled-normalize": "^4.0.0",
+    "styled-theming": "^2.2.0",
+    "styled-transition-group": "^1.0.0"
   },
   "scripts": {
     "start": "webpack-dev-server --config ./internal/webpack/development.babel.js",

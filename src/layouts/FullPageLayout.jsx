@@ -15,14 +15,12 @@ const Root = styled.div`
 `;
 
 const Body = styled.div`
-  flex: 1 0 auto;
-  width: 100%;
-
   display: flex;
-  flex-direction: row;
+  flex: 1;
+  flex-direction: column;
 
-  ${styles.tablet`
-    flex-direction: column;
+  ${styles.desktop`
+    flex-direction: row;
   `}
 `;
 

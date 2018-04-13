@@ -1,33 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Route } from 'react-router';
 import { styles } from 'layouts/media';
 import FullPageLayout from 'layouts/FullPageLayout';
 import Sidebar from 'components/Page/Sidebar';
 import Navbar from 'components/Page/Navbar';
 
 const Main = styled.main`
-  flex-grow: 1;
-  padding: 4px;
+  flex: 1;
 `;
 
 const Nav = styled.nav`
-  flex-grow: 0;
-  flex-shrink: 0;
   order: -1;
+  width: 100%;
 
-  ${styles.tablet`
-    width: 100%;
+  ${styles.desktop`
+    width: auto;
   `}
 `;
 
 const ASide = styled.aside`
-  flex-grow: 0;
-  flex-shrink: 0;
+  width: 100%;
 
-  ${styles.tablet`
-    width: 100%;
+  ${styles.desktop`
+    width: auto;
   `}
 `;
 
