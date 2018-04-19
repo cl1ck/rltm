@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 import ThemeProvider from 'runtime/bits/theme';
 
 const GlobalThemeProvider = ({ children }) => (
   <ThemeProvider selector="activeThemeData">
     {({ activeThemeData: theme }) => (
-      <StyledThemeProvider theme={theme}>
+      <EmotionThemeProvider theme={theme}>
         {React.Children.only(children)}
-      </StyledThemeProvider>
+      </EmotionThemeProvider>
     )}
   </ThemeProvider>
 );

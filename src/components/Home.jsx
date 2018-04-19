@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { API, Pending, Failed, Success } from 'components/API';
 
-const Article = styled.article`
+const Article = styled('article')`
   padding: 4px;
 `;
 

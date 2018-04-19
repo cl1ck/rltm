@@ -1,7 +1,7 @@
 import { styles } from 'layouts/media';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
-export default styled.button`
+export default styled('button')`
   position: absolute;
   left: 0;
   top: 2px;

@@ -14,13 +14,8 @@
     "stage-2"
   ],
   "plugins": [
-    [
-      "styled-components", 
-      {
-        "ssr": true
-      },
-    ],
     "react-hot-loader/babel",
+    "emotion",
     "polished",
   ],
 }

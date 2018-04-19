@@ -1,13 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { APP_TITLE } from 'config';
 import MenuStateProvider from 'bits/menu';
 import { MdMenu } from 'react-icons/lib/md';
 import MenuButton from 'components/Page/Navbar/MenuButton';
 
-const transitionTime = '0.5s';
-
-const Header = styled.div`
+const Header = styled('div')`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.primaryText};
   text-align: center;

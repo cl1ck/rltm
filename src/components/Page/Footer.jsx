@@ -1,14 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import ThemeProvider from 'runtime/bits/theme';
 
-const Footer = styled.div`
+const Footer = styled('div')`
   background-color: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.secondaryText};
   padding: 2px;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled('a')`
   color: ${({ theme }) => theme.colors.secondaryText};
   text-decoration: underline;
   cursor: pointer;

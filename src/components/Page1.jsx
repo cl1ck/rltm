@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
-const Highlight = styled.article`
+const Highlight = styled('article')`
   background-color: ${props => props.theme.colors.highlight};
   color: ${props => props.theme.colors.highlightText};
   text-align: justify;

@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import MenuStateProvider from 'bits/menu';
 
-const Item = styled.li`
+const Item = styled('li')`
   a {
     text-decoration: none;
     padding: 10px 4px;
@@ -21,7 +21,7 @@ const Item = styled.li`
   }
 `;
 
-const ActiveItem = styled.li`
+const ActiveItem = styled('li')`
   background-color: ${({ theme }) => theme.colors.primaryDark};
   padding: 10px 4px;
   display: block;

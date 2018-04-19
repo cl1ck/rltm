@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { styles } from 'layouts/media';
 
-const Sidebar = styled.div`
+const Sidebar = styled('div')`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.primaryText};
   min-height: 100%;

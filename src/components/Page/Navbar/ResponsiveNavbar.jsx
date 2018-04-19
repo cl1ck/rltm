@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import { styles } from 'layouts/media';
 import MenuStateProvider from 'bits/menu';
@@ -10,7 +10,7 @@ import MediaQuery from 'react-responsive';
 
 const transitionTime = '0.5s';
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled('div')`
   height: 100vh;
   position: fixed;
   left: ${({ visible }) => (visible ? 0 : '-200px')};
@@ -36,7 +36,7 @@ const NavbarContainer = styled.div`
   `}
 `;
 
-const Title = styled.div`
+const Title = styled('div')`
   margin-bottom: 30px;
   padding-left: 24px;
   display: block;
@@ -46,14 +46,14 @@ const Title = styled.div`
   `}
 `;
 
-const List = styled.ul`
+const List = styled('ul')`
   list-style: none;
   text-align: left;
   margin: 0;
   padding: 0;
 `;
 
-const SwipeArea = styled.div`
+const SwipeArea = styled('div')`
   width: 5px;
   position: fixed;
   left: 0;

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { styles } from 'layouts/media';
 import PageHeader from 'components/Page/Header';
 import PageFooter from 'components/Page/Footer';
 
-const Root = styled.div`
+const Root = styled('div')`
   display: flex;
   height: 100%;
 
@@ -14,7 +14,7 @@ const Root = styled.div`
   color: ${props => props.theme.colors.backgroundText};
 `;
 
-const Body = styled.div`
+const Body = styled('div')`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -24,11 +24,11 @@ const Body = styled.div`
   `}
 `;
 
-const Header = styled.header`
+const Header = styled('header')`
   flex: none;
 `;
 
-const Footer = styled.footer`
+const Footer = styled('footer')`
   flex: none;
 `;
 

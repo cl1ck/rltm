@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from 'emotion';
 
 export const sizes = {
   desktop: 1024,

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { styles } from 'layouts/media';
 import FullPageLayout from 'layouts/FullPageLayout';
 import Sidebar from 'components/Page/Sidebar';
 import Navbar from 'components/Page/Navbar';
 
-const Main = styled.main`
+const Main = styled('main')`
   flex: 1;
 `;
 
-const Nav = styled.nav`
+const Nav = styled('nav')`
   order: -1;
   width: 100%;
 
@@ -19,7 +19,7 @@ const Nav = styled.nav`
   `}
 `;
 
-const ASide = styled.aside`
+const ASide = styled('aside')`
   width: 100%;
 
   ${styles.desktop`

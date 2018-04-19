@@ -1,5 +1,5 @@
-import styledNormalize from 'styled-normalize';
-import { injectGlobal } from 'styled-components';
+import styledNormalize from 'emotion-normalize';
+import { injectGlobal } from 'emotion';
 
 export default () => injectGlobal`
   ${styledNormalize}
