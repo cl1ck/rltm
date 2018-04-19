@@ -6,7 +6,6 @@ import MenuStateProvider from 'bits/menu';
 import MenuButton from 'components/Page/Navbar/MenuButton';
 import { MdClose } from 'react-icons/lib/md';
 import Swipeable from 'react-swipeable';
-import MediaQuery from 'react-responsive';
 
 const transitionTime = '0.5s';
 

@@ -1,13 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
-
-const Highlight = styled('article')`
-  background-color: ${props => props.theme.colors.highlight};
-  color: ${props => props.theme.colors.highlightText};
-  text-align: justify;
-  margin: 20px;
-  padding: 4px;
-`;
+import Highlight from 'styles/Highlight';
 
 const Home = () => (
   <Highlight>

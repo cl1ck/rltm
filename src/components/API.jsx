@@ -33,10 +33,10 @@ export class API extends React.Component {
         method,
         data,
       });
-      this.setState({
+      setTimeout(() => this.setState({
         data: response.data,
         status: SUCCESS_STATUS,
-      });
+      }), 5000);
     } catch (e) {
       let error;
       if (e.response) {
@@ -62,6 +62,15 @@ export class API extends React.Component {
 
 API.propTypes = {
   children: PropTypes.node.isRequired,
+  url: PropTypes.string,
+  method: PropTypes.string,
+  data: PropTypes.shape({}),
+};
+
+API.defaultProps = {
+  url: API_URL,
+  method: API_DEFAULT_METHOD,
+  data: {},
 };
 
 export const Pending = ({ children }) => (
