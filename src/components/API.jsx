@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -8,7 +9,7 @@ const PENDING_STATUS = 'pending';
 const FAILED_STATUS = 'failed';
 const SUCCESS_STATUS = 'success';
 
-const {Provider, Consumer} = React.createContext({
+const { Provider, Consumer } = React.createContext({
   status: OUT_OF_SCOPE_STATUS,
 });
 
@@ -27,22 +28,19 @@ export class API extends React.Component {
   callAPI = async () => {
     const { url, method, data } = this.props;
     try {
-      const result = await axios({
+      const response = await axios({
         url,
         method,
         data,
       });
       this.setState({
-        ...result,
-        httpStatus: result.status,
+        data: response.data,
         status: SUCCESS_STATUS,
       });
     } catch (e) {
       let error;
       if (e.response) {
         error = e.response.data;
-      } else if (e.request) {
-        error = e.request.responseText;
       } else {
         error = e.message;
       }
@@ -60,18 +58,10 @@ export class API extends React.Component {
       </Provider>
     );
   }
-};
+}
 
 API.propTypes = {
-  url: PropTypes.string,
-  method: PropTypes.string,
-  data: PropTypes.object,
-};
-
-API.defaultProps = {
-  url: API_URL,
-  method: API_DEFAULT_METHOD,
-  data: {},
+  children: PropTypes.node.isRequired,
 };
 
 export const Pending = ({ children }) => (

@@ -10,7 +10,7 @@ const Article = styled.article`
 const Home = () => (
   <Article>
     <h1><FormattedMessage id="components.Home.helloWorld" /></h1>
-    <API url="https://jsonpladceholder.typicode.com/posts/1" method="get">
+    <API url="https://jsonplaceholder.typicode.com/posts/1" method="get">
       <Pending>...</Pending>
       <Failed>{error => JSON.stringify(error)}</Failed>
       <Success>{({ body }) => body}</Success>
